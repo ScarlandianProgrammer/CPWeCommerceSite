@@ -20,3 +20,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.display-5 {
+    padding: 1em;
+    padding-left: 0;
+}

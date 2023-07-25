@@ -2,35 +2,37 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1 class="display-2">Welcome to Data Driven Design INC.</h1>
+<h1 class="display-2 text-light">Welcome to Data Driven Design INC.</h1>
 
-<div class="container-fluid">
-    <p>
+<div class="container">
+    <p class="text-secondary">
         Here at DDD INC., we strive to provide the most dynamic, responsive and stunning products
         you've ever seen. Our team of carefully currated and highly trained staff are here to make
         sure that you get the best product we can give, as fast as we can get it to you.
     </p>
-    <p>
+    <p class="text-secondary">
         Have you ever ordered a product online, waited for the fateful day the delivery driver
         sets it on your doorstep, and opening it up to find a piece of junk? With DDD INC., you will
         never have to worry about being let down by a misleading advertisment campaign. You will recieve
         step by step videos of us making you product, so that you can be assured of the quality of your
         order.
     </p>
-    <p>
+    <p class="text-secondary">
         And, if for some reason, the product that arrived at your door doesn't meet your standards,
         You can send it back, and we'll send a replacement for free. We want to make sure that you
         know what you're getting, and that you will be satisfied with the investment you made.
     </p>
 </div>
 
-<h2>Products</h2>
+<hr class="border border-primary border-2 opacity-50">
+
+<h2 class="display-5 text-light">Products</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4">
     @for (int i = 0; i < 3; i++)
     {
         <div class="col">
             <div class="card">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="https://placehold.co/100" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Placeholder Title</h5>
                     <p class="card-text">This product is currently unavailable. We hope to release it soon.</p>
@@ -38,4 +40,61 @@
             </div>
         </div>
     }
+</div>
+
+<hr class="border border-primary border-2 opacity-50">
+
+<h2 class="display-5 text-light">Frequently Asked Questions</h2>
+
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                How did you start this company?
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <strong>The other founders and I met at school,</strong> and for an assignment, we desided to make this website.
+                Then, we decided that this would actually be a great company, so we made what was originally a joke project,
+                into what you know it as today.
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                How do you generate lorem ipsum text so easily?
+            </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <p>
+                    When putting lorem ipsum in a Visual Studio, I was filled with too much inspiration in the moment to try and find the
+                    specific command to generate lorem ipsum, so I just went to <a href="https://loremipsum.io/">loremipsum.io</a> and
+                    copied and pasted a paragraph in this div, like so.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Did you maintain good study habits and finish the homework submission ontime instead of cramming it in a day or two before it was due?
+            </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                Heh. No, imagine being responsable.
+            </div>
+        </div>
+    </div>
 </div>
