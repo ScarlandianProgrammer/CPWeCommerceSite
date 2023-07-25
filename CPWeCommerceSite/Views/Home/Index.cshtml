@@ -2,7 +2,40 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1 class="display-2">Welcome to Data Driven Design INC.</h1>
+
+<div class="container-fluid">
+    <p>
+        Here at DDD INC., we strive to provide the most dynamic, responsive and stunning products
+        you've ever seen. Our team of carefully currated and highly trained staff are here to make
+        sure that you get the best product we can give, as fast as we can get it to you.
+    </p>
+    <p>
+        Have you ever ordered a product online, waited for the fateful day the delivery driver
+        sets it on your doorstep, and opening it up to find a piece of junk? With DDD INC., you will
+        never have to worry about being let down by a misleading advertisment campaign. You will recieve
+        step by step videos of us making you product, so that you can be assured of the quality of your
+        order.
+    </p>
+    <p>
+        And, if for some reason, the product that arrived at your door doesn't meet your standards,
+        You can send it back, and we'll send a replacement for free. We want to make sure that you
+        know what you're getting, and that you will be satisfied with the investment you made.
+    </p>
+</div>
+
+<h2>Products</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @for (int i = 0; i < 3; i++)
+    {
+        <div class="col">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Placeholder Title</h5>
+                    <p class="card-text">This product is currently unavailable. We hope to release it soon.</p>
+                </div>
+            </div>
+        </div>
+    }
 </div>
