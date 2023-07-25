@@ -21,6 +21,7 @@ body {
   margin-bottom: 60px;
 }
 
-[class~=display] {
-    margin-top: 1em;
+.display-5 {
+    padding: 1em;
+    padding-left: 0;
 }
