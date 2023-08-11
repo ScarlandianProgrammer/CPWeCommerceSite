@@ -22,7 +22,6 @@ namespace CPWeCommerceSite.Models
         /// <summary>
         /// The price of a product that the company offers
         /// </summary>
-        public double Price { get; set; }
-        // can be null?
+        public double? Price { get; set; }
     }
 }
