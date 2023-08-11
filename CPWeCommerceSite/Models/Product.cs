@@ -20,8 +20,10 @@ namespace CPWeCommerceSite.Models
         public string Title { get; set; }
 
         /// <summary>
-        /// The price of a product that the company offers
+        /// The price of a product that the company offers.
+        /// The product is discontinued if the price is null
         /// </summary>
+        [Range(0, Double.MaxValue)]
         public double? Price { get; set; }
     }
 }
