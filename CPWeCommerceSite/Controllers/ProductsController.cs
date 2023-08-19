@@ -20,13 +20,13 @@ namespace CPWeCommerceSite.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Product product) 
+        public async Task<IActionResult> Create(Product product) 
         {
             if (ModelState.IsValid)
             {
                 // Add to DB
                 _context.Products.Add(product);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
                 // show success message on page
                 ViewData["Message"] = $"{product.Title} was added successfully!";
