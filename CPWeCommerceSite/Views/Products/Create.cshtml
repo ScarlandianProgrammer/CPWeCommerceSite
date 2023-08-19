@@ -4,6 +4,11 @@
     ViewData["Title"] = "Create a New Product";
 }
 
+@if (ViewData["Message"] != null)
+{
+    <h1 class="text-light">@ViewData["Message"]</h1>
+}
+
 <h1 class="text-light display-2">Create a new game</h1>
 
 <hr />
