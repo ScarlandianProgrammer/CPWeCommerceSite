@@ -23,6 +23,7 @@ namespace CPWeCommerceSite.Models
         /// The price of a product that the company offers.
         /// The product is discontinued if the price is null
         /// </summary>
+        [Required]
         [Range(0, Double.MaxValue)]
         public double? Price { get; set; }
     }
