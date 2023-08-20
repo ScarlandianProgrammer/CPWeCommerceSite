@@ -1,6 +1,7 @@
 ﻿using CPWeCommerceSite.Data;
 using CPWeCommerceSite.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CPWeCommerceSite.Controllers
 {
@@ -11,6 +12,16 @@ namespace CPWeCommerceSite.Controllers
         public ProductsController(ProductContext context)
         {
             _context = context;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            // get products from DB
+            List<Product> products = await _context.Products.ToListAsync();
+
+            // put them on the page
+            return View(products);
         }
 
         [HttpGet]
