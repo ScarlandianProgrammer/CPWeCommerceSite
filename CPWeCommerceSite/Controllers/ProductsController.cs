@@ -100,5 +100,15 @@ namespace CPWeCommerceSite.Controllers
             TempData["Message"] = $"Thsi game was already deleted";
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> Details(int id)
+        {
+            Product product = await _context.Products.FindAsync(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
+        }
     }
 }
