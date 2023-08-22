@@ -56,5 +56,17 @@ namespace CPWeCommerceSite.Controllers
             }
             return View(product);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Product productModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Products.Update(productModel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(productModel);
+        }
     }
 }
