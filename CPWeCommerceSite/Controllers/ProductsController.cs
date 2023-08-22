@@ -64,6 +64,9 @@ namespace CPWeCommerceSite.Controllers
             {
                 _context.Products.Update(productModel);
                 await _context.SaveChangesAsync();
+
+                TempData["Message"] = productModel.Title + " was updated Successfully.";
+
                 return RedirectToAction("Index");
             }
             return View(productModel);
