@@ -71,5 +71,34 @@ namespace CPWeCommerceSite.Controllers
             }
             return View(productModel);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            Product? product = await _context.Products.FindAsync(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            Product product = await _context.Products.FindAsync(id);
+
+            if (product != null)
+            {
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+
+                TempData["Message"] = $"{product.Title} was deleted successfully";
+                return RedirectToAction("Index");
+            }
+            TempData["Message"] = $"Thsi game was already deleted";
+            return RedirectToAction("Index");
+        }
     }
 }
