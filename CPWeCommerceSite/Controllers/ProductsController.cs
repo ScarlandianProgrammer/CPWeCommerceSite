@@ -45,5 +45,31 @@ namespace CPWeCommerceSite.Controllers
             }
             return View(product);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            Product product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Product productModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Products.Update(productModel);
+                await _context.SaveChangesAsync();
+
+                TempData["Message"] = productModel.Title + " was updated Successfully.";
+
+                return RedirectToAction("Index");
+            }
+            return View(productModel);
+        }
     }
 }
