@@ -58,6 +58,7 @@ namespace CPWeCommerceSite.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
+            ModelState.AddModelError(string.Empty, "Credentials not found!");
 
             return View(loginModel);
         }
