@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject IHttpContextAccessor _httpContext
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -28,12 +30,24 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Products" asp-action="Index">Catalog</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Members" asp-action="Register">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Members" asp-action="Login">Login</a>
-                        </li>
+                        @{
+                            string? userEmail = _httpContext.HttpContext.Session.GetString("Email");
+                        }
+                        @if (userEmail == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Members" asp-action="Register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Members" asp-action="Login">Login</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <p class="text-light nav-link">Hello, @userEmail</p>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

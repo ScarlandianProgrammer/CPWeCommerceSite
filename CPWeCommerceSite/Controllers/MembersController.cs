@@ -55,6 +55,7 @@ namespace CPWeCommerceSite.Controllers
                             select member).SingleOrDefault();
                 if (m != null)
                 {
+                    HttpContext.Session.SetString("Email", loginModel.Email);
                     return RedirectToAction("Index", "Home");
                 }
             }
