@@ -33,6 +33,8 @@ namespace CPWeCommerceSite.Controllers
 				_context.Members.Add(member);
 				await _context.SaveChangesAsync();
 
+                LogUserIn(member.Email);
+
                 return RedirectToAction("Index", "Home");
 			}
             return View(newMember);
@@ -55,13 +57,25 @@ namespace CPWeCommerceSite.Controllers
                             select member).SingleOrDefault();
                 if (m != null)
                 {
-                    HttpContext.Session.SetString("Email", loginModel.Email);
+                    LogUserIn(loginModel.Email);
                     return RedirectToAction("Index", "Home");
                 }
             }
             ModelState.AddModelError(string.Empty, "Credentials not found!");
 
             return View(loginModel);
+        }
+
+        private void LogUserIn(string email)
+        {
+            HttpContext.Session.SetString("Email", email);
+        }
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
