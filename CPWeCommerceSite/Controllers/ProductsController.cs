@@ -15,11 +15,20 @@ namespace CPWeCommerceSite.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
+            const int NumProductsPerPage = 3;
+
+            // set currentPage to id if it's not null, otherwise set it to 1
+            int currentPage = id ?? 1;
+            const int PageOffset = 1;
+
             // get products from DB
             List<Product> products = await (from product in _context.Products
-                                            select product).ToListAsync();
+                                            select product)
+                                            .Skip(NumProductsPerPage * (currentPage - PageOffset))
+                                            .Take(NumProductsPerPage)
+                                            .ToListAsync();
 
             // put them on the page
             return View(products);
