@@ -18,7 +18,8 @@ namespace CPWeCommerceSite.Controllers
         public async Task<IActionResult> Index()
         {
             // get products from DB
-            List<Product> products = await _context.Products.ToListAsync();
+            List<Product> products = await (from product in _context.Products
+                                            select product).ToListAsync();
 
             // put them on the page
             return View(products);
