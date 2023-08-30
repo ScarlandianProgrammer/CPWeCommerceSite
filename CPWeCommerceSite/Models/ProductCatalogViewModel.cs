@@ -11,6 +11,9 @@ namespace CPWeCommerceSite.Models
             CurrentPage = currentPage;
         }
 
+        /// <summary>
+        /// The list of products to display on the page.
+        /// </summary>
         public List<Product> Products { get; private set; }
 
         /// <summary>
