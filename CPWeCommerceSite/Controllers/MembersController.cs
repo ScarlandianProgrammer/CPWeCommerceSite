@@ -13,12 +13,25 @@ namespace CPWeCommerceSite.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// This takes the user to the register view
+        /// </summary>
+        /// <returns>The Register view</returns>
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
+        /// <summary>
+        /// This validates the user's input, 
+        /// and if it's valid, inserts them into the DB
+        /// </summary>
+        /// <param name="newMember">
+        /// The <see cref="RegisterViewModel"/> 
+        /// that contains the user's input data
+        /// </param>
+        /// <returns>The Home/Index view</returns>
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel newMember)
         {
@@ -40,12 +53,26 @@ namespace CPWeCommerceSite.Controllers
             return View(newMember);
         }
 
+        /// <summary>
+        /// This takes the user to the Login view
+        /// </summary>
+        /// <returns>The Login view</returns>
         [HttpGet]
         public IActionResult Login()
         { 
             return View(); 
         }
 
+        /// <summary>
+        /// This takes the user input, and if it's valid, 
+        /// and there's a corresponding Member in the DB, 
+        /// logs them in
+        /// </summary>
+        /// <param name="loginModel">
+        /// The <see cref="LoginViewModel"/> containing
+        /// the user's input data
+        /// </param>
+        /// <returns>The Home/Index view</returns>
         [HttpPost]
         public IActionResult Login(LoginViewModel loginModel) 
         {
@@ -66,11 +93,20 @@ namespace CPWeCommerceSite.Controllers
             return View(loginModel);
         }
 
+        /// <summary>
+        /// Sets the user's email in the session
+        /// </summary>
+        /// <param name="email">The email of the user</param>
         private void LogUserIn(string email)
         {
             HttpContext.Session.SetString("Email", email);
         }
 
+        /// <summary>
+        /// Logs the user out of the session, and 
+        /// redirects them to the Home/Index view
+        /// </summary>
+        /// <returns>The Home/Index view</returns>
         [HttpGet]
         public IActionResult Logout()
         {
