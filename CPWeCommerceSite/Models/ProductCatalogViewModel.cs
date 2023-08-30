@@ -4,14 +4,14 @@ namespace CPWeCommerceSite.Models
 {
     public class ProductCatalogViewModel
     {
-        public ProductCatalogViewModel(IEnumerable<Product> products, int lastPage, int currentPage)
+        public ProductCatalogViewModel(List<Product> products, int lastPage, int currentPage)
         {
             Products = products;
             LastPage = lastPage;
             CurrentPage = currentPage;
         }
 
-        public IEnumerable<Product> Products { get; private set; }
+        public List<Product> Products { get; private set; }
 
         /// <summary>
         /// The last page of the catalog, calculated from

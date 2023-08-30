@@ -23,6 +23,12 @@ namespace CPWeCommerceSite.Controllers
             int currentPage = id ?? 1;
             const int PageOffset = 1;
 
+            // get total number of products
+            int totalProducts = await _context.Products.CountAsync();
+            // rounding pages up to nearest whole number
+            double MaxNumPages = Math.Ceiling((double)totalProducts / NumProductsPerPage);
+            int lastPage = Convert.ToInt32(MaxNumPages);
+
             // get products from DB
             List<Product> products = await (from product in _context.Products
                                             select product)
@@ -30,8 +36,11 @@ namespace CPWeCommerceSite.Controllers
                                             .Take(NumProductsPerPage)
                                             .ToListAsync();
 
+            ProductCatalogViewModel catalogModel = 
+                new ProductCatalogViewModel(products, lastPage, currentPage);
+
             // put them on the page
-            return View(products);
+            return View(catalogModel);
         }
 
         [HttpGet]
@@ -59,7 +68,7 @@ namespace CPWeCommerceSite.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            Product product = await _context.Products.FindAsync(id);
+            Product? product = await _context.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -97,7 +106,7 @@ namespace CPWeCommerceSite.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            Product product = await _context.Products.FindAsync(id);
+            Product? product = await _context.Products.FindAsync(id);
 
             if (product != null)
             {
@@ -107,12 +116,12 @@ namespace CPWeCommerceSite.Controllers
                 TempData["Message"] = $"{product.Title} was deleted successfully";
                 return RedirectToAction("Index");
             }
-            TempData["Message"] = $"Thsi game was already deleted";
+            TempData["Message"] = $"This game was already deleted";
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> Details(int id)
         {
-            Product product = await _context.Products.FindAsync(id);
+            Product? product = await _context.Products.FindAsync(id);
 
             if (product == null)
             {
